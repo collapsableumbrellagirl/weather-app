@@ -15,12 +15,68 @@
   </head>
   <body>
     <div class="container">
-      <!--START OF CONTENT-->
+      <div class="weather-app">
+        <!--START OF CONTENT-->
 
-      <h1>Hello World</h1>
+        <h1 id="cityName">Austin</h1>
+        <!--START OF ROW 1-->
+        <div class="row">
+          <!--START OF ROW 1 COL 1-->
+          <div class="col-4">
+            <!--START OF WEATHER WORD DESCRIPTOR-->
+            <div class="row" id="weatherDescriptor">Cloudy</div>
+            <br />
+            <!--END OF WEATHER WORD DESCRIPTOR-->
 
-      <!--END OF CONTENT-->
+            <!--START OF PRECIP/HUMID/WIND -->
+            <div class="row" id="precipitation">Precipitation: 15%</div>
+            <div class="row" id="humidity">Humidity: 63%</div>
+            <div class="row" id="windspeed">Wind: 15 mph</div>
+
+            <!--END OF PRECIP/HUMID/WIND -->
+          </div>
+          <!--END OF ROW 1 COL 1-->
+
+          <!--START OF ROW 1 COL 2-->
+          <div class="col-4 text-center">
+            <img src="https://ssl.gstatic.com/onebox/weather/64/cloudy.png" />
+          </div>
+          <!--END OF ROW 1 COL 2-->
+          <!--START OF ROW 1 COL 3-->
+          <div class="col-4 text-end">
+            <p id="current-time">
+              <span id="current-hour">07</span>:<span id="current-mint"
+                >05</span
+              >
+              <span id="current-daytime">AM</span>
+            </p>
+            <p id="today-date-and-time">
+              <span id="current-day-of-week">Saturday</span>
+              <span id="current-moonth">Jan </span>
+              <span id="current-day-of-month">1</span>
+            </p>
+          </div>
+          <!--END OF ROW 1 COL 3-->
+        </div>
+        <!--END OF ROW 1-->
+
+        <!--START OF ROW 2-->
+        <div class="row">
+          <div class="col text-center" id="main-temp">
+            <span id="main-degree-number">40</span>
+          </div>
+        </div>
+        <!--END OF ROW 2-->
+      </div>
+      <br />
+      <small>
+        <a href="https://github.com/vernbueno/weather-app" target="_blank"
+          >Open-source
+        </a>
+        coded by Veronica Bueno
+      </small>
     </div>
+    <!--END OF CONTENT-->
 
     <script src="src/app.js"></script>
   </body>
