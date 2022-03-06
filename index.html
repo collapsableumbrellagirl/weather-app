@@ -15,77 +15,81 @@
   </head>
   <body>
     <div class="container">
-      <div class="weather-app">
-        <!--START OF CONTENT-->
+      <div class="weather-wrapper">
+        <div class="weather-app">
+          <!--START OF CONTENT-->
 
-        <h1 id="cityName">Austin</h1>
-        <!--START OF ROW 1-->
-        <div class="row align-items-start">
-          <!--START OF ROW 1 COL 1-->
-          <div class="col-4  text-start" id="weather-description">
-            <!--START OF WEATHER WORD DESCRIPTOR-->
-            <p><span id="weather-word-descriptor">Cloudy</span></p>
-            
-            
-            <!--END OF WEATHER WORD DESCRIPTOR-->
+          <h1 id="cityName">Austin</h1>
 
-            <!--START OF PRECIP/HUMID/WIND -->
-            <p> 
-              <span id="precipitation">Precipitation: 15% </span> 
-              <br/>
-              <span id="humidity">Humidity: 63% </span>
-              <br />
-              <span id="windspeed">Wind: 15 mph</span> 
-            </p>
-            
+          <!--START OF ROW 1-->
+          <div class="row align-items-start">
+            <!--START OF ROW 1 COL 1-->
+            <div class="col-4 text-start" id="weather-description">
+              <!--START OF WEATHER WORD DESCRIPTOR-->
+              <p><span id="weather-word-descriptor">Cloudy</span></p>
+              <!--END OF WEATHER WORD DESCRIPTOR-->
 
-            <!--END OF PRECIP/HUMID/WIND -->
+              <!--START OF PRECIP/HUMID/WIND -->
+              <p>
+                <span id="precipitation">Precipitation: 15% </span>
+                <br />
+                <span id="humidity">Humidity: 63% </span>
+                <br />
+                <span id="windspeed">Wind: 15 mph</span>
+              </p>
+              <!--END OF PRECIP/HUMID/WIND -->
+            </div>
+            <!--END OF ROW 1 COL 1-->
+
+            <!--START OF ROW 1 COL 2-->
+            <div class="col-4 text-center align-self-center">
+              <img src="https://ssl.gstatic.com/onebox/weather/64/cloudy.png" />
+            </div>
+            <!--END OF ROW 1 COL 2-->
+
+            <!--START OF ROW 1 COL 3-->
+            <div class="col-4 text-end" id="current-date-and-time">
+              <p id="current-time">
+                <span id="current-hour">07</span>:<span id="current-mint">
+                  05
+                </span>
+                <span id="current-daytime">AM</span>
+              </p>
+              <p id="today-date-and-time">
+                <span id="current-day-of-week">Saturday</span>
+                <span id="current-moonth">Jan </span>
+                <span id="current-day-of-month">1</span>
+              </p>
+            </div>
+            <!--END OF ROW 1 COL 3-->
           </div>
-          <!--END OF ROW 1 COL 1-->
+          <!--END OF ROW 1-->
 
-          <!--START OF ROW 1 COL 2-->
-          <div class="col-4 text-center align-self-center">
-            <img src="https://ssl.gstatic.com/onebox/weather/64/cloudy.png" />
+          <!--START OF ROW 2-->
+          <div class="row align-items-center">
+            <div class="col text-center" id="main-temp">
+              <span id="main-degree-number">40</span>
+            </div>
           </div>
-          <!--END OF ROW 1 COL 2-->
 
-          <!--START OF ROW 1 COL 3-->
-          <div class="col-4 text-end" id="current-date-and-time">
-            <p id="current-time">
-              <span id="current-hour">07</span>:<span id="current-mint"
-                >05</span
-              >
-              <span id="current-daytime">AM</span>
-            </p>
-            <p id="today-date-and-time">
-              <span id="current-day-of-week">Saturday</span>
-              <span id="current-moonth">Jan </span>
-              <span id="current-day-of-month">1</span>
-            </p>
-          </div>
-          <!--END OF ROW 1 COL 3-->
+          <!--END OF ROW 2-->
         </div>
-        <!--END OF ROW 1-->
+        <!--END OF WEB APP-->
 
-        <!--START OF ROW 2-->
-        <div class="row align-items-center">
-          <div class="col text-center" id="main-temp">
-            <span id="main-degree-number">40</span>
-          </div>
-        </div>
-        <br />
-        <!--END OF ROW 2-->
+        <!--START OF CREATED BY-->
         <small class="text-start">
-          <span id="created-by"></span>
+          <span id="created-by">
             <a href="https://github.com/vernbueno/weather-app" target="_blank">
               Open-source
             </a>
             coded by Veronica Bueno
           </span>
         </small>
+        <!--end OF CREATED BY-->
       </div>
+      <!--END OF WRAPPER-->
     </div>
-    <!--END OF CONTENT-->
+    <!--END OF CONTAINER-->
 
     <script src="src/app.js"></script>
   </body>

@@ -1,12 +1,28 @@
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
 #cityName {
+  /*START OF ALIGNMENT*/
   text-align: center;
+
+  /*START OF STYLE*/
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 28px;
+  letter-spacing: 0.08em;
+  text-shadow: 0px 4px 4px #e0e0e0;
+  text-transform: capitalize;
 }
 
+.weather-wrapper {
+  max-width: 700px;
+  margin: 30px auto;
+}
 .weather-app {
-  max-width: 600px;
-  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #dadde1;
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px 1px rgba(85, 85, 85, 0.1);
 }
-
-/* #weather-description {
-  text-align: start;
-} */
