@@ -17,7 +17,7 @@ body {
 }
 
 .weather-wrapper {
-  max-width: 700px;
+  max-width: 720px;
   margin: 30px auto;
 }
 .weather-app {
@@ -29,6 +29,10 @@ body {
 
 #weather-icon {
   margin-bottom: 20px;
+}
+
+#main-overview {
+  text-transform: capitalize;
 }
 
 #weather-word-descriptor {

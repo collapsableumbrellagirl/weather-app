@@ -10,6 +10,7 @@
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="src/style.css" />
     <title>Weather App</title>
   </head>
@@ -62,7 +63,7 @@
             <!--START OF ROW 1 COL 1-->
             <div class="col-4 text-start" id="main-overview">
               <!--START OF WEATHER WORD DESCRIPTOR-->
-              <p><span id="weather-word-descriptor">Cloudy</span></p>
+              <p><span id="weather-word-descriptor"></span></p>
               <!--END OF WEATHER WORD DESCRIPTOR-->
 
               <!--START OF DATE AND TIME-->
@@ -97,11 +98,11 @@
             <div class="col-4 text-end" id="current-conditions-overview">
               <!--START OF PRECIP/HUMID/WIND -->
               <p class="text-muted">
-                <span id="precipitation">Precipitation: 15% </span>
+                <!-- <span id="precipitation">Precipitation: 15% </span>
+                <br /> -->
+                <span id="humidity"></span>
                 <br />
-                <span id="humidity">Humidity: 63% </span>
-                <br />
-                <span id="windspeed">Wind: 15 mph</span>
+                <span id="windspeed"></span>
               </p>
               <!--END OF PRECIP/HUMID/WIND -->
             </div>
@@ -112,7 +113,7 @@
           <!--START OF ROW 2-->
           <div class="row align-items-center">
             <div class="col text-center clearfix" id="main-temp">
-              <span id="main-degree-number">40°</span>
+              <span id="main-degree-number"></span>
             </div>
           </div>
           <!--END OF ROW 2-->
