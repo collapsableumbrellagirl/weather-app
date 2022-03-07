@@ -1,8 +1,48 @@
 let apiKey = "87b9752c714fbde6317ef3900b3d8fb6";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=st louis&units=imperial&appid=${apiKey}`;
+let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Paris&units=imperial&appid=${apiKey}`;
 console.log(apiUrl);
-let now = new Date();
-console.log(now);
+
+function formatZeroPrefix(num) {
+  return num < 10 ? `0${num}` : `${num}`;
+}
+
+function formatDate(timestamp) {
+  //calculate the date
+  let date = new Date(timestamp);
+  let dayinMonth = date.getDate();
+  let dayofWeek = days[date.getDay()];
+  let month = months[date.getMonth()];
+  let hours = date.getHours();
+  let minutes = date.getMinutes();
+  return `${formatZeroPrefix(hours)}:${formatZeroPrefix(
+    minutes
+  )} <br/> ${dayofWeek} ${month} ${dayinMonth} `;
+}
+
+const days = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+];
+
+const months = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
+];
 
 function displayWeatherOverview(response) {
   console.log(response);
@@ -24,8 +64,8 @@ function displayWeatherOverview(response) {
     response.data.wind.speed
   )} mph`;
 
-  // document.querySelector(
-  //   "#precipitation"
-  // ).innerHTML = `Precipitation: ${response.data.weather[1].main} %`;
+  document.querySelector("#current-time-date").innerHTML = formatDate(
+    response.data.dt * 1000
+  );
 }
 axios.get(apiUrl).then(displayWeatherOverview);
