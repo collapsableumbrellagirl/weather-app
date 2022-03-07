@@ -1,9 +1,8 @@
-let apiKey = "87b9752c714fbde6317ef3900b3d8fb6";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${unit}&appid=${apiKey}`;
-
 //initilize city display
 let city = "Austin";
 let unit = "imperial";
+let apiKey = "87b9752c714fbde6317ef3900b3d8fb6";
+let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${unit}&appid=${apiKey}`;
 
 //refer to index of month and day of week to make prettier
 const days = [
