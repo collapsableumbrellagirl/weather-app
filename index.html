@@ -19,18 +19,84 @@
         <div class="weather-app">
           <!--START OF CONTENT-->
 
+          <header class="clearfix">
+            <!-- start of radio buttons-->
+            <div
+              class="btn-group temp-units"
+              role="group"
+              aria-label="Basic radio toggle button group"
+            >
+              <input
+                type="radio"
+                class="btn-check btn-sm"
+                name="btnradio"
+                id="btn-celsius"
+                autocomplete="off"
+              />
+              <label class="btn btn-sm btn-outline-primary" for="btn-celsius">
+                °C
+              </label>
+
+              <input
+                type="radio"
+                class="btn-check btn-sm"
+                name="btnradio"
+                id="btn-fahrenheit"
+                autocomplete="off"
+                checked
+              />
+              <label
+                class="btn btn-sm btn-outline-primary"
+                for="btn-fahrenheit"
+              >
+                °F
+              </label>
+            </div>
+            <!-- end of radio buttons-->
+          </header>
+
           <h1 id="cityName">Austin</h1>
 
           <!--START OF ROW 1-->
-          <div class="row align-items-start">
+          <div class="row align-items-start align-items-center">
             <!--START OF ROW 1 COL 1-->
-            <div class="col-4 text-start" id="weather-description">
+            <div class="col-4 text-start" id="main-overview">
               <!--START OF WEATHER WORD DESCRIPTOR-->
               <p><span id="weather-word-descriptor">Cloudy</span></p>
               <!--END OF WEATHER WORD DESCRIPTOR-->
 
+              <!--START OF DATE AND TIME-->
+              <p id="current-time-date">
+                <strong
+                  ><span id="current-hour">07</span>:
+                  <span id="current-min"> 05 </span>
+                  <span id="current-daytime">AM</span></strong
+                >
+                <br />
+
+                <span id="current-day-of-week">
+                  <strong>Saturday</strong>
+                </span>
+                <span id="current-moonth">Jan </span>
+                <span id="current-day-of-month">1</span>
+              </p>
+              <!--END OF DATE AND TIME-->
+            </div>
+            <!--END OF ROW 1 COL 1-->
+
+            <!--START OF ROW 1 COL 2-->
+            <div class="col-4 text-center align-self-center" id="weather-icon">
+              <img
+                class="img-fluid"
+                src="Weatherly - Original render copy/Cloud 3 zap.png"
+              />
+            </div>
+            <!--END OF ROW 1 COL 2-->
+
+            <!--START OF ROW 1 COL 3-->
+            <div class="col-4 text-end" id="current-conditions-overview">
               <!--START OF PRECIP/HUMID/WIND -->
-              <p>
+              <p class="text-muted">
                 <span id="precipitation">Precipitation: 15% </span>
                 <br />
                 <span id="humidity">Humidity: 63% </span>
@@ -39,39 +105,16 @@
               </p>
               <!--END OF PRECIP/HUMID/WIND -->
             </div>
-            <!--END OF ROW 1 COL 1-->
-
-            <!--START OF ROW 1 COL 2-->
-            <div class="col-4 text-center align-self-center">
-              <img src="https://ssl.gstatic.com/onebox/weather/64/cloudy.png" />
-            </div>
-            <!--END OF ROW 1 COL 2-->
-
-            <!--START OF ROW 1 COL 3-->
-            <div class="col-4 text-end" id="current-date-and-time">
-              <p id="current-time">
-                <span id="current-hour">07</span>:<span id="current-mint">
-                  05
-                </span>
-                <span id="current-daytime">AM</span>
-              </p>
-              <p id="today-date-and-time">
-                <span id="current-day-of-week">Saturday</span>
-                <span id="current-moonth">Jan </span>
-                <span id="current-day-of-month">1</span>
-              </p>
-            </div>
             <!--END OF ROW 1 COL 3-->
           </div>
           <!--END OF ROW 1-->
 
           <!--START OF ROW 2-->
           <div class="row align-items-center">
-            <div class="col text-center" id="main-temp">
-              <span id="main-degree-number">40</span>
+            <div class="col text-center clearfix" id="main-temp">
+              <span id="main-degree-number">40°</span>
             </div>
           </div>
-
           <!--END OF ROW 2-->
         </div>
         <!--END OF WEB APP-->

@@ -8,7 +8,7 @@ body {
   text-align: center;
 
   /*START OF STYLE*/
-  font-size: 24px;
+  font-size: 38px;
   font-weight: bold;
   line-height: 28px;
   letter-spacing: 0.08em;
@@ -25,4 +25,27 @@ body {
   border: 1px solid #dadde1;
   border-radius: 5px;
   box-shadow: 2px 2px 2px 1px rgba(85, 85, 85, 0.1);
+}
+
+#weather-icon {
+  margin-bottom: 20px;
+}
+
+#weather-word-descriptor {
+  font-weight: bold;
+  font-size: larger;
+}
+
+#main-degree-number {
+  font-weight: bold;
+  font-size: 38px;
+}
+.temp-units .btn {
+  border-radius: 200px;
+  font-weight: light;
+  font-size: 9px;
+}
+
+.temp-units {
+  margin-left: 90%;
 }
