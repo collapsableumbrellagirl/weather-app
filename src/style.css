@@ -27,7 +27,7 @@ body {
   box-shadow: 2px 2px 2px 1px rgba(85, 85, 85, 0.1);
 }
 
-#weather-icon {
+#weather-icon-container {
   margin-bottom: 20px;
 }
 

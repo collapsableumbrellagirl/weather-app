@@ -1,5 +1,5 @@
 //initilize city display
-let city = "Austin";
+let city = "St Louis";
 let unit = "imperial";
 let apiKey = "87b9752c714fbde6317ef3900b3d8fb6";
 let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${unit}&appid=${apiKey}`;
@@ -30,15 +30,26 @@ const months = [
   "Dec",
 ];
 
-//format time for correct display
+/**
+ * This function translates weather id codes from openweather to asset paths
+ * for their icons because I think the icons from the site are ugly.
+ *
+ * @param id {int} - the weather id code from openweather
+ *
+ * @returns str - the icon filename associated with the weather id code
+ */
+function replaceIcon(id) {}
 
+//format time for correct display
 function formatZeroPrefix(num) {
   return num < 10 ? `0${num}` : `${num}`;
 }
 
-//data transformation of timestamp for date and time display
+/**data transformation of timestamp for date and time display
+ * Grabbing the timestamp from javascript to transform it for current date
+ * @returns str - this keeps code single responsibility, transform that timestamp to string and displays
+ */
 function formatDate(timestamp) {
-  //calculate the date
   let date = new Date(timestamp);
   let dayinMonth = date.getDate();
   let dayofWeek = days[date.getDay()];
@@ -74,6 +85,15 @@ function displayWeatherOverview(response) {
   document.querySelector("#current-time-date").innerHTML = formatDate(
     response.data.dt * 1000
   );
+
+  document
+    .querySelector("#weather-icon")
+    .setAttribute(
+      "src",
+      `Weatherly - Original render copy$/${replaceIcon(
+        response.data.weather[0].id
+      )}`
+    );
 }
 
 //initializer function
