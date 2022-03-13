@@ -2,6 +2,7 @@
 
 let unit = "imperial";
 let city = "Austin";
+let apiKey = "87b9752c714fbde6317ef3900b3d8fb6";
 
 //refer to index of month and day of week to make prettier
 const days = [
@@ -145,8 +146,11 @@ const newWeatherNightIcon = {
   804: "Cloud.png",
 };
 
+/**
+ *
+ * @param {city} searchCity - this is the driving function that takes the returns of all the other functions to create the primary apiURL to run against @displayWeatherOverview
+ */
 function searchCity(city) {
-  let apiKey = "87b9752c714fbde6317ef3900b3d8fb6";
   let apiEndPoint = `https://api.openweathermap.org/data/2.5/weather`;
 
   const params = new URLSearchParams();
@@ -207,9 +211,17 @@ function formatDate(timestamp) {
   )} <br/> ${dayofWeek} ${month} ${dayinMonth} `;
 }
 
+/**
+ *
+ * @param {unit} windspeedUnit - this takes the unit based of the main apiurl
+ *
+ * @if - this statement says that if the current unit in the apiURL is imperial, to denote the windspeed in MPH
+ * @else - this statement says that otherwise it should default to m/s for metric
+ *
+ * @returns  -
+ */
 function windspeedUnit(unit) {
-  let currentWindSpeedUnit = unit;
-  if (currentWindSpeedUnit === "imperial") {
+  if (unit === "imperial") {
     return `mph`;
   } else {
     return `m/s`;
@@ -251,6 +263,64 @@ function displayWeatherOverview(response) {
 
 /**
  *
+ * @param {Response} updateMyCityDisplay - This pulls the object from the apiURL. The object contains data on current location, including current 'name' of location
+ *
+ * @city response.data.name - This reassigns the value of city to the 'name' of location that is based off current lat & long of device
+ *
+ * @searchCity - It then uses that newly reassined value of city to run against this function
+ */
+function updateMyCityDisplay(response) {
+  console.log(response);
+  city = response.data.name;
+  searchCity(city);
+}
+
+/**
+ *
+ * @param {Lat} updateCurrentLocation - This takes the lat data that was pulled from the @findMyLocation function
+ * @param {Long} updateCurrentLocation - This takes the lat data that was pulled from the @findMyLocation function
+ *
+ * @updateCurrentLocation (lat,long) takess the above information to inject into a newly created apiURL
+ */
+function updateCurrentLocation(lat, long) {
+  console.log(lat, long);
+  let apiEndPoint = `https://api.openweathermap.org/data/2.5/weather`;
+  const params = new URLSearchParams();
+  params.append("lat", lat);
+  params.append("lon", long);
+  params.append("units", unit);
+  params.append("appid", apiKey);
+  let apiUrl = `${apiEndPoint}?${params.toString()}`;
+  console.log(apiUrl);
+  axios.get(apiUrl).then(updateMyCityDisplay);
+}
+
+/**
+ *
+ * @param {Postion} findMyLocation - This takes the location data of current device pulled from javascript and pulls the lat and long data
+ *
+ * It then takes that lat and long data to run against the @updateCurrentLocation function
+ */
+function findMyLocation(position) {
+  console.log(position);
+  let lat = position.coords.latitude;
+  let long = position.coords.longitude;
+  updateCurrentLocation(lat, long);
+}
+
+/**
+ *
+ * @param {Event} getCurrentLocation - This uses javascript to pull the location data of the current device.
+ *
+ * It takes this location data of current devices and runs it against the @findMyLocationFunction
+ */
+function getCurrentLocation(event) {
+  event.preventDefault();
+  navigator.geolocation.getCurrentPosition(findMyLocation);
+}
+
+/**
+ *
  * @param {Event}  handleSubmit - This reassigns city (from global city = "Austin") to str value of the search form input
  * @function searchCity {city}  - This takes the reassigned value of city to run against the searchCity function;
  */
@@ -285,6 +355,10 @@ document
 document
   .querySelector("#btn-fahrenheit")
   .addEventListener("click", updateTempToFahrenheit);
+
+document
+  .querySelector("#current-search-click-button")
+  .addEventListener("click", getCurrentLocation);
 
 //initializer function
 document.querySelector("#search-form").addEventListener("submit", handleSubmit);

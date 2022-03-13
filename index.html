@@ -23,7 +23,7 @@
           <!--START OF SEARCH FORM-->
           <form id="search-form">
             <div class="row">
-              <div class="col-3 p-0 mb-3">
+              <div class="col-3 p-1 mb-3">
                 <input
                   type="search"
                   placeholder="Enter a city name"
@@ -31,8 +31,21 @@
                   id="city-input"
                 />
               </div>
-              <span class="col-2">
-                <button type="submit" class="btn btn-primary">Search</button>
+              <span class="col-6 p-1">
+                <button
+                  type="submit"
+                  class="btn btn-primary"
+                  id="input-search-submit-button"
+                >
+                  Search
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  id="current-search-click-button"
+                >
+                  📍 Current
+                </button>
               </span>
             </div>
           </form>
