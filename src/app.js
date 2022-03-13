@@ -202,9 +202,18 @@ function formatDate(timestamp) {
   let month = months[date.getMonth()];
   let hours = date.getHours();
   let minutes = date.getMinutes();
-  return `${formatZeroPrefix(hours)}:${formatZeroPrefix(
+  return `Last Updated: ${formatZeroPrefix(hours)}:${formatZeroPrefix(
     minutes
   )} <br/> ${dayofWeek} ${month} ${dayinMonth} `;
+}
+
+function windspeedUnit(unit) {
+  let currentWindSpeedUnit = unit;
+  if (currentWindSpeedUnit === "imperial") {
+    return `mph`;
+  } else {
+    return `m/s`;
+  }
 }
 
 //display of weather overview
@@ -226,7 +235,7 @@ function displayWeatherOverview(response) {
 
   document.querySelector("#windspeed").innerHTML = `Wind Speed: ${Math.round(
     response.data.wind.speed
-  )} mph`;
+  )} ${windspeedUnit(unit)}`;
 
   document.querySelector("#current-time-date").innerHTML = formatDate(
     response.data.dt * 1000
@@ -242,7 +251,7 @@ function displayWeatherOverview(response) {
 
 /**
  *
- * @param {Event}  handleSubmit - This reassigns city (from global city = "Austin") to str value of the input
+ * @param {Event}  handleSubmit - This reassigns city (from global city = "Austin") to str value of the search form input
  * @function searchCity {city}  - This takes the reassigned value of city to run against the searchCity function;
  */
 function handleSubmit(event) {
