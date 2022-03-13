@@ -20,10 +20,31 @@
         <div class="weather-app">
           <!--START OF CONTENT-->
 
-          <header class="clearfix">
-            <!-- start of radio buttons-->
+          <!--START OF SEARCH FORM-->
+          <form id="search-form">
+            <div class="row">
+              <div class="col-3 p-0 mb-3">
+                <input
+                  type="search"
+                  placeholder="Enter a city name"
+                  class="form-control"
+                  id="city-input"
+                />
+              </div>
+              <span class="col-2">
+                <button type="submit" class="btn btn-primary">Search</button>
+              </span>
+            </div>
+          </form>
+
+          <!--END OF SEARCH FORM-->
+
+          <!-- <header class="clearfix"> -->
+          <!-- start of radio buttons-->
+
+          <form>
             <div
-              class="btn-group temp-units"
+              class="btn-group temp-units mb-3"
               role="group"
               aria-label="Basic radio toggle button group"
             >
@@ -53,8 +74,10 @@
                 °F
               </label>
             </div>
-            <!-- end of radio buttons-->
-          </header>
+          </form>
+
+          <!-- end of radio buttons-->
+          <!-- </header> -->
 
           <h1 id="cityName"></h1>
 

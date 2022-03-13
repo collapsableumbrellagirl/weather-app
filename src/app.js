@@ -1,8 +1,8 @@
 //initilize city display
-let city = "New York";
+// let city = "Paris";
 let unit = "imperial";
-let apiKey = "87b9752c714fbde6317ef3900b3d8fb6";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${unit}&appid=${apiKey}`;
+// let apiKey = "87b9752c714fbde6317ef3900b3d8fb6";
+// let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${unit}&appid=${apiKey}`;
 
 //refer to index of month and day of week to make prettier
 const days = [
@@ -146,6 +146,18 @@ const newWeatherNightIcon = {
   804: "Cloud.png",
 };
 
+function searchCity(city) {
+  let apiKey = "87b9752c714fbde6317ef3900b3d8fb6";
+  let apiEndPoint = `https://api.openweathermap.org/data/2.5/weather`;
+
+  const params = new URLSearchParams();
+  params.append("q", city);
+  params.append("units", unit);
+  params.append("appid", apiKey);
+  let apiUrl = `${apiEndPoint}?${params.toString()}`;
+  axios.get(apiUrl).then(displayWeatherOverview);
+}
+
 /**
  *
  * @param {Number} currentTime - In Epoch seconds
@@ -229,7 +241,15 @@ function displayWeatherOverview(response) {
     );
 }
 
-//initializer function
-axios.get(apiUrl).then(displayWeatherOverview);
+function handleSubmit(event) {
+  event.preventDefault();
+  city = document.querySelector("#city-input").value;
+  searchCity(city);
+}
 
-console.log(apiUrl);
+document.querySelector("#search-form").addEventListener("submit", handleSubmit);
+
+//initializer function
+// axios.get(apiUrl).then(displayWeatherOverview);
+
+searchCity("Austin");
