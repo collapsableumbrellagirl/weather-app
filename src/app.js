@@ -1,9 +1,7 @@
 //initilize city display
-// let city = "Paris";
+
 let unit = "imperial";
 let city = "Austin";
-// let apiKey = "87b9752c714fbde6317ef3900b3d8fb6";
-// let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${unit}&appid=${apiKey}`;
 
 //refer to index of month and day of week to make prettier
 const days = [
@@ -242,23 +240,34 @@ function displayWeatherOverview(response) {
     );
 }
 
+/**
+ *
+ * @param {Event}  handleSubmit - This reassigns city (from global city = "Austin") to str value of the input
+ * @function searchCity {city}  - This takes the reassigned value of city to run against the searchCity function;
+ */
 function handleSubmit(event) {
   event.preventDefault();
   city = document.querySelector("#city-input").value;
   searchCity(city);
 }
 
+/**
+ *
+ * @param {Event} updateTempToCelsius - This updates the param value of unit in the url to the corresponding temp unit of "metric";
+ */
 function updateTempToCelsius(event) {
   unit = "metric";
   searchCity(city);
 }
 
+/**
+ *
+ * @param {Event} updateTempToFahrenheit - This updates the param value of "unit" in the url to the corresponding temp unit of "imperial";
+ */
 function updateTempToFahrenheit(event) {
   unit = "imperial";
   searchCity(city);
 }
-
-document.querySelector("#search-form").addEventListener("submit", handleSubmit);
 
 document
   .querySelector("#btn-celsius")
@@ -267,7 +276,8 @@ document
 document
   .querySelector("#btn-fahrenheit")
   .addEventListener("click", updateTempToFahrenheit);
-//initializer function
-// axios.get(apiUrl).then(displayWeatherOverview);
 
+//initializer function
+document.querySelector("#search-form").addEventListener("submit", handleSubmit);
+//Initiaizing display city
 searchCity(city);
