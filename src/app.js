@@ -1,6 +1,7 @@
 //initilize city display
 // let city = "Paris";
 let unit = "imperial";
+let city = "Austin";
 // let apiKey = "87b9752c714fbde6317ef3900b3d8fb6";
 // let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${unit}&appid=${apiKey}`;
 
@@ -247,9 +248,26 @@ function handleSubmit(event) {
   searchCity(city);
 }
 
+function updateTempToCelsius(event) {
+  unit = "metric";
+  searchCity(city);
+}
+
+function updateTempToFahrenheit(event) {
+  unit = "imperial";
+  searchCity(city);
+}
+
 document.querySelector("#search-form").addEventListener("submit", handleSubmit);
 
+document
+  .querySelector("#btn-celsius")
+  .addEventListener("click", updateTempToCelsius);
+
+document
+  .querySelector("#btn-fahrenheit")
+  .addEventListener("click", updateTempToFahrenheit);
 //initializer function
 // axios.get(apiUrl).then(displayWeatherOverview);
 
-searchCity("Austin");
+searchCity(city);
