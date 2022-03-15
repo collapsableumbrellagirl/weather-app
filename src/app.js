@@ -261,6 +261,31 @@ function displayWeatherOverview(response) {
     );
 }
 
+function displayForecast() {
+  let forecastRow = document.querySelector("#forecast");
+  let forecastHTML = "";
+
+  document.querySelector("#forecast").innerHTML = `
+      
+      <div class="row align-items-center mt-5">
+        <div class="col-2 text-center">
+          <div class="weather-forecast-date">Thurs</div>
+          <img
+            src="Weatherly - Original render copy/Big snow.png"
+            class="p-0 ms-0"
+            width="100%"
+            alt=""
+          />
+          <div class="weather-forecast-temperature p-2">
+            <span class="weather-forecast-max">22</span>
+            <span class="weather-forecast-min">18</span>
+          </div>
+        </div>
+      </div>
+    `;
+  forecastRow.innerHTML = forecastHTML;
+}
+
 /**
  *
  * @param {Response} updateMyCityDisplay - This pulls the object from the apiURL. The object contains data on current location, including current 'name' of location
