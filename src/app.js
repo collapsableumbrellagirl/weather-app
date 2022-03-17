@@ -265,29 +265,32 @@ function displayWeatherOverview(response) {
 
 function displayForecast() {
   let forecastRow = document.querySelector("#forecast");
-  let forecastHTML = "";
-  forecastRow = forecastHTML;
-
-  document.querySelector("#forecast").innerHTML = `
-      
-      <div class="row align-items-center mt-5">
-        <div class="col-2 text-center">
-          <div class="weather-forecast-date">Thurs</div>
+  let forecastHTML = `<div class="row align-items-center mt-5">`;
+  let days = ["Mon", "Tue", "Wed", "Fri"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      ` 
+        <div class="col-3 text-center">
+          <div class="weather-forecast-date">${day}</div>
           <img
             src="Weatherly - Original render copy/Big snow.png"
             class="p-0 ms-0"
-            width="100%"
+            width="50%"
             alt=""
           />
           <div class="weather-forecast-temperature p-2">
             <span class="weather-forecast-max">22</span>
             <span class="weather-forecast-min">18</span>
           </div>
-        </div>
-      </div>
-    `;
+        </div>`;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
   forecastRow.innerHTML = forecastHTML;
 }
+
+displayForecast();
 
 /**
  *
