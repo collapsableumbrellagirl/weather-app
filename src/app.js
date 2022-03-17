@@ -148,7 +148,9 @@ const newWeatherNightIcon = {
 
 /**
  *
- * @param {city} searchCity - this is the driving function that takes the returns of all the other functions to create the primary apiURL to run against @displayWeatherOverview
+ * @param {str} city - - this is the name of the city (wether input in search bar or current location) that will be injected into apiUrl for the @displayWeatherOverview function to display information at ui level
+ *
+ * @searchCity - This is the function that will create the apiURL to run against @displayWeatherOverivew
  */
 function searchCity(city) {
   let apiEndPoint = `https://api.openweathermap.org/data/2.5/weather`;
@@ -264,6 +266,7 @@ function displayWeatherOverview(response) {
 function displayForecast() {
   let forecastRow = document.querySelector("#forecast");
   let forecastHTML = "";
+  forecastRow = forecastHTML;
 
   document.querySelector("#forecast").innerHTML = `
       
