@@ -192,6 +192,15 @@ function replaceIcon(data) {
   }
 }
 
+function updateForecastIcon(dayObj) {
+  let id = dayObj.weather[0].id;
+  if (isDayTime(dayObj.dt, dayObj.sunrise, dayObj.sunset)) {
+    return newWeatherDayIcon[id];
+  } else {
+    return newWeatherNightIcon[id];
+  }
+}
+
 //format time for correct display
 function formatZeroPrefix(num) {
   return num < 10 ? `0${num}` : `${num}`;
@@ -230,25 +239,48 @@ function windspeedUnit(unit) {
   }
 }
 
-function displayForecast() {
+function getForecast(coordinates) {
+  let apiEndPoint = `https://api.openweathermap.org/data/2.5/onecall?`;
+  const params = new URLSearchParams();
+
+  params.append("lat", coordinates.lat);
+  params.append("lon", coordinates.lon);
+  params.append("units", unit);
+  params.append("appid", apiKey);
+  let apiUrl = `${apiEndPoint}${params.toString()}`;
+  console.log(apiUrl);
+  axios.get(apiUrl).then(displayForecast);
+}
+
+function convertTimestampToDayOfWeek(timestamp) {
+  let date = new Date(timestamp);
+  return days[date.getDay()];
+}
+
+function displayForecast(response) {
   let forecastRow = document.querySelector("#forecast");
+
   let forecastHTML = `<div class="row align-items-center mt-5">`;
-  let days = ["Mon", "Tue", "Wed", "Fri"];
-  days.forEach(function (day) {
+
+  response.data.daily.slice(1, 5).forEach(function (dayObj) {
+    let dayOfWeek = convertTimestampToDayOfWeek(dayObj.dt * 1000).slice(0, 3);
+    let tempMax = Math.round(dayObj.temp.max);
+    let tempMin = Math.round(dayObj.temp.min);
+
     forecastHTML =
       forecastHTML +
       ` 
         <div class="col-3 text-center">
-          <div class="weather-forecast-date">${day}</div>
+          <div class="weather-forecast-date">${dayOfWeek}</div>
           <img
-            src="Weatherly - Original render copy/Big snow.png"
+            src="Weatherly - Original render copy/${updateForecastIcon(dayObj)}"
             class="p-0 ms-0"
             width="50%"
             alt=""
           />
           <div class="weather-forecast-temperature p-2">
-            <span class="weather-forecast-max">22</span>
-            <span class="weather-forecast-min">18</span>
+            <span class="weather-forecast-max">${tempMax}°</span>
+            <span class="text-muted weather-forecast-min">${tempMin}°</span>
           </div>
         </div>`;
   });
@@ -259,8 +291,6 @@ function displayForecast() {
 
 //display of weather overview
 function displayWeatherOverview(response) {
-  console.log(response);
-
   document.querySelector("#cityName").innerHTML = response.data.name;
   document.querySelector("#main-degree-number").innerHTML = ` ${Math.round(
     response.data.main.temp
@@ -289,7 +319,7 @@ function displayWeatherOverview(response) {
       `Weatherly - Original render copy/${replaceIcon(response.data)}`
     );
 
-  displayForecast();
+  getForecast(response.data.coord);
 }
 
 /**
@@ -301,7 +331,6 @@ function displayWeatherOverview(response) {
  * @searchCity - It then uses that newly reassined value of city to run against this function
  */
 function updateMyCityDisplay(response) {
-  console.log(response);
   city = response.data.name;
   searchCity(city);
 }
@@ -314,7 +343,6 @@ function updateMyCityDisplay(response) {
  * @updateCurrentLocation (lat,long) takess the above information to inject into a newly created apiURL
  */
 function updateCurrentLocation(lat, long) {
-  console.log(lat, long);
   let apiEndPoint = `https://api.openweathermap.org/data/2.5/weather`;
   const params = new URLSearchParams();
   params.append("lat", lat);
@@ -322,7 +350,7 @@ function updateCurrentLocation(lat, long) {
   params.append("units", unit);
   params.append("appid", apiKey);
   let apiUrl = `${apiEndPoint}?${params.toString()}`;
-  console.log(apiUrl);
+
   axios.get(apiUrl).then(updateMyCityDisplay);
 }
 
@@ -333,7 +361,6 @@ function updateCurrentLocation(lat, long) {
  * It then takes that lat and long data to run against the @updateCurrentLocation function
  */
 function findMyLocation(position) {
-  console.log(position);
   let lat = position.coords.latitude;
   let long = position.coords.longitude;
   updateCurrentLocation(lat, long);
