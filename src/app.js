@@ -267,9 +267,7 @@ function displayForecast(response) {
     let tempMax = Math.round(dayObj.temp.max);
     let tempMin = Math.round(dayObj.temp.min);
 
-    forecastHTML =
-      forecastHTML +
-      ` 
+    forecastHTML += ` 
         <div class="col-3 text-center">
           <div class="weather-forecast-date">${dayOfWeek}</div>
           <img
