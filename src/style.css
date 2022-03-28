@@ -19,7 +19,7 @@ body {
 }
 
 .weather-wrapper {
-  max-width: 920px;
+  max-width: 820px;
   margin: 30px auto;
 }
 .weather-app {
@@ -168,8 +168,14 @@ body {
 #created-by,
 #github-link,
 #github-links {
-  color: rgb(202, 202, 202);
+  color: rgb(192, 192, 192);
   text-decoration: none;
+  font-style: none;
+}
+
+#my-name,
+#hosting-name {
+  color: rgba(140, 0, 255, 0.637);
 }
 
 #weather-icon-container {
