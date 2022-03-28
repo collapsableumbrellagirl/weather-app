@@ -1,49 +1,76 @@
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  height: 100vh;
+  width: auto;
+  background: linear-gradient(45deg, #d1f9ff, #c5ecf3, #fcf8cb, #efbafc);
+  background-size: 400%;
+  animation: bg-animation 5s infinite alternate;
 }
 
-#cityName {
-  /*START OF ALIGNMENT*/
-  text-align: center;
+@keyframes bg-animation {
+  0% {
+    background-position: left;
+  }
 
-  /*START OF STYLE*/
-  font-size: 38px;
-  font-weight: bold;
-  line-height: 28px;
-  letter-spacing: 0.08em;
-  text-shadow: 0px 4px 4px #e0e0e0;
-  text-transform: capitalize;
+  100% {
+    background-position: right;
+  }
 }
 
 .weather-wrapper {
-  max-width: 720px;
+  max-width: 920px;
   margin: 30px auto;
 }
 .weather-app {
+  margin: 0 auto;
   padding: 20px;
-  border: 1px solid #dadde1;
-  border-radius: 5px;
-  box-shadow: 2px 2px 2px 1px rgba(85, 85, 85, 0.1);
+  border: 1px solid #ffffff;
+  background-color: rgb(255, 255, 255, 0.2);
+  border-radius: 10px;
+  -webkit-box-shadow: 0px 0px 158px 27px rgba(255, 255, 255, 0.9);
+  -moz-box-shadow: 0px 0px 158px 27px rgba(255, 255, 255, 0.9);
+  box-shadow: 0px 0px 158px 27px rgba(255, 255, 255, 0.9);
 }
 
-#weather-icon-container {
-  margin-bottom: 20px;
+.weather-forecast-section {
+  margin: 0 auto;
+}
+
+.individual-weather-section {
+  margin: 5px;
+  background-color: rgb(255, 255, 255, 0.4);
+  border-radius: 10px;
+}
+
+#current-time-date {
+  color: rgb(0, 0, 0, 0.4);
 }
 
 #main-overview {
-  text-transform: capitalize;
+  padding: 15px 15px;
+  background-color: rgb(255, 255, 255, 0.4);
+  border-radius: 10px;
 }
 
-#weather-word-descriptor {
-  font-weight: bold;
-  font-size: larger;
+#current-conditions-overview {
+  padding: 15px 15px;
+  background-color: rgb(255, 255, 255, 0.4);
+  border-radius: 10px;
 }
 
-#main-degree-number {
-  font-weight: bold;
-  font-size: 38px;
+#humidity-styling,
+#windspeed-styling {
+  font-weight: normal;
+  color: rgb(0, 0, 0, 0.4);
 }
+
+#humidity,
+#windspeed {
+  font-weight: normal;
+  color: rgba(119, 79, 250, 0.7);
+}
+
 .temp-units .btn {
   border-radius: 200px;
   font-weight: light;
@@ -52,4 +79,120 @@ body {
 
 .temp-units {
   margin-left: 90%;
+}
+
+#city-input {
+  background-color: rgb(255, 255, 255, 0.8);
+  border-radius: 5px;
+  border: none;
+}
+#city-input:focus {
+  -webkit-box-shadow: 0px 0px 20px 5px rgba(165, 138, 255, 0.47);
+  -moz-box-shadow: 0px 0px 20px 5px rgba(165, 138, 255, 0.47);
+  box-shadow: 0px 0px 20px 5px rgba(165, 138, 255, 0.47);
+}
+
+#city-input:hover {
+  cursor: pointer;
+  -webkit-box-shadow: 0px 0px 20px 5px rgba(165, 138, 255, 0.47);
+  -moz-box-shadow: 0px 0px 20px 5px rgba(165, 138, 255, 0.47);
+  box-shadow: 0px 0px 20px 5px rgba(165, 138, 255, 0.47);
+  transition: 300ms ease-in;
+}
+
+#cityName {
+  /*START OF ALIGNMENT*/
+  text-align: center;
+
+  /*START OF STYLE*/
+  font-size: 60px;
+  font-weight: bold;
+  line-height: 28px;
+  letter-spacing: 0.08em;
+  text-transform: capitalize;
+  color: rgba(255, 255, 255);
+  font-weight: bold;
+  text-shadow: 10px -2px 6px rgba(0, 0, 0, 0.2);
+  margin: 30px 0;
+}
+
+#input-search-submit-button,
+#current-search-click-button {
+  /* background-color: rgba(156, 126, 255, 0.5); */
+  background-color: rgba(163, 136, 253, 0.7);
+
+  border: white;
+}
+
+#input-search-submit-button:hover,
+#current-search-click-button:hover {
+  /* background-color: rgba(119, 79, 250, 0.5); */
+  background-color: rgba(119, 79, 250, 0.7);
+  transition: all 400ms ease-in-out;
+  border: none;
+}
+
+#main-overview {
+  text-transform: capitalize;
+}
+
+#weather-word-descriptor {
+  text-align: justify;
+  font-weight: bold;
+  font-size: larger;
+  color: rgba(119, 79, 250, 0.7);
+}
+
+#main-degree-number {
+  color: rgba(255, 255, 255);
+  font-weight: bold;
+  font-size: 75px;
+  text-shadow: 10px -2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.weather-forecast-date {
+  font-weight: bolder;
+  text-transform: capitalize;
+  color: rgb(0, 0, 0, 0.4);
+}
+
+.weather-forecast-max {
+  font-weight: bolder;
+  color: rgba(147, 115, 255, 0.952);
+}
+.weather-forecast-min {
+  color: rgba(119, 79, 250, 0.7);
+}
+
+.footer-text,
+#created-by,
+#github-link,
+#github-links {
+  color: rgb(202, 202, 202);
+  text-decoration: none;
+}
+
+#weather-icon-container {
+  margin-bottom: 20px;
+}
+
+#weather-icon,
+.forecast-icons {
+  animation: icon-bounce 5s 1;
+}
+
+@keyframes icon-bounce {
+  0%,
+  25%,
+  50%,
+  75%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-20px);
+  }
+  60% {
+    transform: translateY(-12px);
+  }
 }

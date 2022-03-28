@@ -248,7 +248,7 @@ function getForecast(coordinates) {
   params.append("units", unit);
   params.append("appid", apiKey);
   let apiUrl = `${apiEndPoint}${params.toString()}`;
-  console.log(apiUrl);
+
   axios.get(apiUrl).then(displayForecast);
 }
 
@@ -260,7 +260,7 @@ function convertTimestampToDayOfWeek(timestamp) {
 function displayForecast(response) {
   let forecastRow = document.querySelector("#forecast");
 
-  let forecastHTML = `<div class="row align-items-center mt-5">`;
+  let forecastHTML = `<div class="row align-items-center justify-content-center mt-5">`;
 
   response.data.daily.slice(1, 5).forEach(function (dayObj) {
     let dayOfWeek = convertTimestampToDayOfWeek(dayObj.dt * 1000).slice(0, 3);
@@ -268,17 +268,17 @@ function displayForecast(response) {
     let tempMin = Math.round(dayObj.temp.min);
 
     forecastHTML += ` 
-        <div class="col-3 text-center">
+        <div class="col-2 m-3 p-4 text-center individual-weather-section align-self-center">
           <div class="weather-forecast-date">${dayOfWeek}</div>
           <img
             src="Weatherly - Original render copy/${updateForecastIcon(dayObj)}"
-            class="p-0 ms-0"
-            width="50%"
+            class="p-0 ms-0 forecast-icons"
+            width="80%"
             alt=""
           />
-          <div class="weather-forecast-temperature p-2">
-            <span class="weather-forecast-max">${tempMax}°</span>
-            <span class="text-muted weather-forecast-min">${tempMin}°</span>
+          <div class="weather-forecast-temperature">
+            <span class="weather-forecast-max">${tempMax}° | </span>
+            <span class=" weather-forecast-min">${tempMin}°</span>
           </div>
         </div>`;
   });
@@ -289,6 +289,7 @@ function displayForecast(response) {
 
 //display of weather overview
 function displayWeatherOverview(response) {
+  console.log(response);
   document.querySelector("#cityName").innerHTML = response.data.name;
   document.querySelector("#main-degree-number").innerHTML = ` ${Math.round(
     response.data.main.temp
@@ -300,9 +301,9 @@ function displayWeatherOverview(response) {
 
   document.querySelector(
     "#humidity"
-  ).innerHTML = `Humidity: ${response.data.main.humidity}% `;
+  ).innerHTML = ` ${response.data.main.humidity}% `;
 
-  document.querySelector("#windspeed").innerHTML = `Wind Speed: ${Math.round(
+  document.querySelector("#windspeed").innerHTML = ` ${Math.round(
     response.data.wind.speed
   )} ${windspeedUnit(unit)}`;
 

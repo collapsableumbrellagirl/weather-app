@@ -10,8 +10,15 @@
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
+
+    <script
+      src="https://kit.fontawesome.com/3ae1bd948a.js"
+      crossorigin="anonymous"
+    ></script>
+
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="src/style.css" />
+
     <title>Weather App</title>
   </head>
   <body>
@@ -28,6 +35,7 @@
                   type="search"
                   placeholder="Enter a city name"
                   class="form-control"
+                  autocomplete="off"
                   id="city-input"
                 />
               </div>
@@ -37,14 +45,17 @@
                   class="btn btn-primary"
                   id="input-search-submit-button"
                 >
-                  Search
+                  <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
                 <button
                   type="button"
                   class="btn btn-primary"
                   id="current-search-click-button"
                 >
-                  📍
+                  <i
+                    class="fas fa-location-arrow location-icon fa-fade"
+                    style="--fa-animation-duration: 2s; --fa-fade-opacity: 0.6"
+                  ></i>
                 </button>
               </span>
             </div>
@@ -97,7 +108,7 @@
           <!--START OF ROW 1-->
           <div class="row align-items-start align-items-center">
             <!--START OF ROW 1 COL 1-->
-            <div class="col-4 text-start" id="main-overview">
+            <div class="col-4 text-center" id="main-overview">
               <!--START OF WEATHER WORD DESCRIPTOR-->
               <p><span id="weather-word-descriptor"></span></p>
               <!--END OF WEATHER WORD DESCRIPTOR-->
@@ -122,13 +133,16 @@
             <!--END OF ROW 1 COL 2-->
 
             <!--START OF ROW 1 COL 3-->
-            <div class="col-4 text-end" id="current-conditions-overview">
+            <div class="col-4 text-center" id="current-conditions-overview">
               <!--START OF PRECIP/HUMID/WIND -->
-              <p class="text-muted">
+              <p>
                 <!-- <span id="precipitation">Precipitation: 15% </span>
                 <br /> -->
+
+                <span id="humidity-styling">Humidity:</span>
                 <span id="humidity"></span>
                 <br />
+                <span id="windspeed-styling">Wind Speed:</span>
                 <span id="windspeed"></span>
               </p>
               <!--END OF PRECIP/HUMID/WIND -->
@@ -169,10 +183,16 @@
         <!--END OF WEB APP-->
 
         <!--START OF CREATED BY-->
-        <small class="text-start">
+
+        <small class="text-start footer-text">
           <span id="created-by">
-            <a href="https://github.com/vernbueno/weather-app" target="_blank">
-              Open-source
+            <i class="fa-brands fa-github-square"></i>
+            <a
+              href="https://github.com/vernbueno/weather-app"
+              class="github-links"
+              target="_blank"
+            >
+              <span id="github-link">Open source</span>
             </a>
             coded by Veronica Bueno
           </span>
